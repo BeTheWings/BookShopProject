@@ -1,0 +1,45 @@
+.sliders-container {
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+.slider-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 수직 방향으로 가운데 정렬 */
+    align-items: center; /* 수평 방향으로 가운데 정렬 */
+    height: 300px; /* 슬라이더 아이템의 높이 설정 */
+}
+
+.slider-image {
+    max-width: 30%; /* 이미지의 최대 너비를 50%로 설정 */
+    height: auto; /* 이미지의 높이를 자동으로 조정 */
+    margin: 0 auto; /* 이미지의 가로 중앙 정렬 */
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .slider-image {
+        animation: App-logo-spin infinite 20s linear;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .slider-image {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-image {
+        max-width: 80%;
+    }
+}

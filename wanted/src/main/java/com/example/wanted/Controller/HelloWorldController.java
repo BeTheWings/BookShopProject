@@ -1,6 +1,6 @@
 package com.example.wanted.Controller;
 
-import com.example.wanted.Dto.UserDao;
+import com.example.wanted.Dao.UserDao;
 import com.example.wanted.Service.WantedMainService;
 import com.example.wanted.Vo.Users;
 import lombok.RequiredArgsConstructor;
@@ -38,10 +38,11 @@ public class HelloWorldController {
 
     @GetMapping(value="/login")
     @ResponseBody
-    public String loginPage(){
+    public  Map<String,String> loginPage(){
+        Map<String,String> data = new HashMap<>();
+        data.put("url","login");
 
-
-       return "login";
+       return data;
     }
 
 

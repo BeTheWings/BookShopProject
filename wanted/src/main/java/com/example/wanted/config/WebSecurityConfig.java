@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/**").permitAll()
                 //api로 시작하는 것은 인증 x
                 .antMatchers("/api/**").permitAll()
+                .antMatchers("/bookList/**").permitAll()
                 // 어떤 요청이든 '인증'
                 .anyRequest().authenticated();
                 // 로그인 기능 허용
@@ -27,8 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .loginPage("/customer/login")
             .defaultSuccessUrl("/")
             .failureUrl("/customer/login?error")
-            .permitAll();
-        // 로그아웃 기능 허용
+            .permitAll();// 로그아웃 기능 허용
         http.logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
                 .logoutSuccessUrl("/")

@@ -1,0 +1,162 @@
+header {
+    background-color: #333;
+    color: #fff; /* 텍스트 색상을 흰색으로 설정 */
+    padding: 10px 0; /* 위아래 여백을 10px로 설정 */
+    font: bold 16px "malgun gothic";
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+}
+
+header nav ul {
+    list-style: none; /* 목록 스타일(불릿)을 제거 */
+    padding: 0; /* 패딩을 제거 */
+    margin: 0; /* 마진을 제거 */
+    display: flex; /* 리스트 아이템을 플렉스로 정렬 */
+    justify-content: center; /* 리스트 아이템을 수평 가운데 정렬 */
+}
+
+header ul li {
+    position: relative;
+    width: 140px;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+header nav ul li a {
+    color: #fff; /* 링크 텍스트 색상을 흰색으로 설정 */
+    text-decoration: none; /* 링크의 밑줄을 제거 */
+    display: block; /* 링크를 블록 요소로 설정 */
+}
+
+header ul li ul {
+    display: none; /* 서브 메뉴를 기본적으로 숨김 */
+    position: absolute;
+    top: 100%; /* 부모 요소의 아래쪽에 배치 */
+    left: 0; /* 부모 요소의 왼쪽에 맞춤 */
+    font-size: 14px;
+    background: #333;
+    list-style: none; /* 서브 메뉴의 목록 스타일(불릿)을 제거 */
+    padding: 10px 0; /* 서브 메뉴의 패딩을 10px로 설정 */
+}
+
+header ul li:hover ul {
+    display: block; /* 부모 요소에 마우스를 올리면 서브 메뉴를 표시 */
+    width: 100%; /* 서브 메뉴의 너비를 부모 요소에 맞춤 */
+    text-align: left; /* 서브 메뉴 텍스트를 왼쪽 정렬 */
+}
+
+header ul li ul li {
+    width: auto; /* 서브 메뉴 항목의 넓이를 자동으로 설정 */
+    margin: 0 10px; /* 서브 메뉴 항목의 좌우 여백을 10px로 설정 */
+}
+
+header nav ul li a.small-font {
+    font-size: 12px; /* 작은 폰트 크기 설정 */
+    margin: 0 2px; /* 좌우 여백을 2px로 설정 */
+}
+
+header nav ul li a.bottom-align {
+    display: flex;
+    align-items: flex-end; /* 아래 정렬 */
+    height: 100%; /* 부모 요소의 높이를 100%로 설정 */
+}
+
+header .dropdown:hover .dropdown-content {
+    display: block; /* 드롭다운 메뉴를 표시 */
+}
+
+header .dropdown-content {
+    display: none; /* 드롭다운 메뉴를 숨김 */
+    position: absolute;
+    background-color: #333; /* 배경색 설정 */
+    min-width: 140px; /* 최소 너비 설정 */
+    z-index: 1; /* 다른 요소 위에 표시 */
+}
+
+header .dropdown-content li {
+    padding: 8px 12px; /* 드롭다운 항목의 패딩 설정 */
+}
+
+header .dropdown-content li a {
+    color: #fff; /* 드롭다운 링크의 텍스트 색상 */
+    text-decoration: none; /* 드롭다운 링크의 밑줄 제거 */
+    display: block; /* 블록 요소로 표시 */
+}
+
+header .dropdown-content li a:hover {
+    background-color: #575757; /* 드롭다운 항목에 마우스를 올렸을 때 배경색 변경 */
+}
+
+/* 로그인과 회원가입 링크 스타일링 */
+header .auth-links {
+    display: flex;
+    flex-direction: row; /* 수직 정렬 */
+    justify-content: flex-end; /* 아래쪽 정렬 */
+}
+
+header .auth-links li {
+    width: auto; /* 넓이 자동 설정 */
+    margin: 0 10px; /* 상하 여백 2px */
+}
+@media (max-width: 768px) {
+    header {
+        font-size: 14px; /* 작은 화면에서 폰트 크기를 줄임 */
+    }
+
+    header ul li {
+        width: 100px; /* 작은 화면에서 리스트 아이템의 넓이를 줄임 */
+    }
+
+    header ul li ul {
+        position: static; /* 서브 메뉴를 기본 흐름에 따라 배치 */
+        width: 100%; /* 서브 메뉴의 너비를 부모 요소에 맞춤 */
+    }
+
+    header ul li ul li {
+        width: 100%; /* 서브 메뉴 항목의 넓이를 부모 요소에 맞춤 */
+        margin: 5px 0; /* 서브 메뉴 항목의 상하 여백 설정 */
+    }
+    header nav ul li a.small-font {
+        font-size: 10px; /* 작은 화면에서 작은 폰트의 크기를 더 줄임 */
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column; /* 아주 작은 화면에서 수직 정렬로 변경 */
+        align-items: center; /* 수직 정렬 시 가운데 정렬 */
+    }
+
+    header nav ul {
+        flex-direction: column; /* 내비게이션 리스트를 수직 정렬로 변경 */
+        align-items: center; /* 리스트 항목을 가운데 정렬 */
+    }
+
+    header ul li {
+        width: 100%; /* 리스트 항목을 전체 너비로 설정 */
+        text-align: center; /* 텍스트를 가운데 정렬 */
+    }
+
+    header ul li ul {
+        position: static; /* 서브 메뉴를 기본 흐름에 따라 배치 */
+    }
+
+    header ul li ul li {
+        margin: 10px 0; /* 서브 메뉴 항목의 마진을 상하로 설정 */
+    }
+
+    header .auth-links {
+        flex-direction: row; /* 작은 화면에서는 가로 정렬 */
+    }
+    header ul li ul {
+        position: static; /* 서브 메뉴를 기본 흐름에 따라 배치 */
+        width: 100%; /* 서브 메뉴의 너비를 부모 요소에 맞춤 */
+    }
+
+    header ul li ul li {
+        width: 100%; /* 서브 메뉴 항목의 넓이를 부모 요소에 맞춤 */
+        margin: 5px 0; /* 서브 메뉴 항목의 상하 여백 설정 */
+    }
+
+}
