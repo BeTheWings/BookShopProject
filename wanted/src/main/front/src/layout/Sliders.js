@@ -22,13 +22,19 @@ export default class Sliders extends Component{
             <div className="sliders-container">
                 <Slider {...setting}>
                     <div className="slider-item">
-                        <img src={logo} className="slider-image" alt="logo"/>
+                        <a href="/bookList">
+                            <img src={logo} className="slider-image" alt="logo"/>
+                        </a>
                     </div>
                     <div className="slider-item">
-                        <img src={testImg} className="slider-image-size" alt="testImg"/>
+                        <a href="/bookInfo/1">
+                            <img src={testImg} className="slider-image-size" alt="testImg"/>
+                        </a>
                     </div>
                     <div className="slider-item">
-                        <img src={logo} className="slider-image" alt="logo"/>
+                        <a href="/bookList">
+                            <img src={logo} className="slider-image" alt="logo"/>
+                        </a>
                     </div>
                 </Slider>
             </div>
