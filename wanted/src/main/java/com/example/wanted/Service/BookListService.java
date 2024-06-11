@@ -17,7 +17,7 @@ public class BookListService {
     @Autowired
     private BookInfoDao bookInfoDao;
 
-    private static final Logger logger = LoggerFactory.getLogger(BookListController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookListService.class);
 
     public List<BookInfores> findAllBookInfo() {
 
