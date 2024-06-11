@@ -1,20 +1,30 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import "../../../../css/qna.css";
+import Scroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function QnaList() {
     const [qnaList, setQnaList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [hasMore,setHasMore] = useState(true);
+
     const getQnaList = async () => {
         //await 이란?
         try {
             const resp = await axios.get('/qnaList');
             const data = resp.data; //데이타에 저장
-            setQnaList(data); // 받아온 정보를 BookList에 저장
-            setLoading(false); // 로딩 상태를 false로 변경
+            if(data.length === 0){
+                setHasMore(false);
+            }else{
+                setQnaList(data);
+
+            }
         } catch (error) {
             console.error("Error fetching bookList", error);
             setLoading(true); // 로딩 상태를 false로 변경
+        }finally {
+            setLoading(false); // 로딩 상태를 false로 변경
         }
     };
 
@@ -23,19 +33,24 @@ function QnaList() {
     }, []);
 
     return (
-        <div className="Qna">
-            {loading ? (<h2>Loading...</h2>)
-                : (<h2>Q&A</h2>)
-            }
-            {qnaList.map((qnaList) => (
-                <Post title={qnaList.title} content={qnaList.writer}/>
-            ))}
+        <InfiniteScroll
+            next={getQnaList}
+            hasMore={hasMore}
+            dataLength={qnaList.length}>
+            <div className="Qna">
+                {loading ? (<h2>Loading...</h2>)
+                    : (<h2>Q&A</h2>)
+                }
+                {qnaList.map((qnaList) => (
+                    <Post title={qnaList.title} content={qnaList.writer}/>
+                ))}
 
-        </div>
+            </div>
+        </InfiniteScroll>
     )
 };
 
-    const Post = ({ title, content,qnaId }) => {
+    const Post = ({ title, content }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {

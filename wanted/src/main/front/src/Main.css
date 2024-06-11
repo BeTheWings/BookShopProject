@@ -39,6 +39,12 @@
   list-style-type: none;
 }
 
+.removeDecoration{
+  text-decoration: none; /* 링크의 밑줄을 제거 */
+  color: black;
+
+}
+
 
 
 @keyframes App-logo-spin {

@@ -1,18 +1,30 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
 }
 
 .Qna {
     padding: 20px;
+    background-color: #fff;
+    min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
+}
+.Qna h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
 }
 
 .post {
+    margin-top: 10px;
+    background: #f9f9f9;
+    padding: 15px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
 }
 
 .post-title {

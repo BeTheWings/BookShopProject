@@ -3,8 +3,8 @@ import Sliders from "../../layout/Sliders";
 import React from "react";
 import BookList from "./book/BookList";
 import NoticeList from "./serviceCenter/notice/NoticeList";
-import EventList from "./serviceCenter/qna/QnaList";
-import QnaList from "./event/EventList";
+import QnaList from "./serviceCenter/qna/QnaList";
+import EventList from "./event/EventList";
 
 function Main() {
 
@@ -17,7 +17,7 @@ function Main() {
             <div className="ListContainer">
                 <NoticeList></NoticeList>
                 <EventList></EventList>
-                <QnaList></QnaList>
+                <h2><a className="removeDecoration" href="/questionAndAnswer">Q&A</a></h2>
             </div>
         </div>
     );
