@@ -1,12 +1,11 @@
 import React from 'react';
 import '../../../css/bookInfo.css';
-import logo from "../../../image/logo.svg";
 
 const BookDetail = ({ bookId, title, description, author,coverImageUrl,publishDate,format,pages,isbn,discountPrice,purchaseLink,price }) => {
     return (
         <div className="book-details">
             <div className="book-header">
-                <img src={logo} alt="Logo" className="book-cover"/>
+                <img src={"../../../../public/images/logo.svg"} alt="Logo" className="book-cover"/>
 
                 <div className="book-meta">
                     <h1>{title}</h1>

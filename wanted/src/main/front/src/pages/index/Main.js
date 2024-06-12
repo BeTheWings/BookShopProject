@@ -3,7 +3,6 @@ import Sliders from "../../layout/Sliders";
 import React from "react";
 import BookList from "./book/BookList";
 import NoticeList from "./serviceCenter/notice/NoticeList";
-import QnaList from "./serviceCenter/qna/QnaList";
 import EventList from "./event/EventList";
 
 function Main() {

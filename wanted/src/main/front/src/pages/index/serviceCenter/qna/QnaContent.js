@@ -12,7 +12,7 @@ function QnaContent() {
         try {
             // axios.get()의 결과를 기다림
            // const response = await axios.get(`/bookList/bookInfo/bookId=${bookId}`);
-            const response = await axios.get(`/qnaList/qnaInfo`, { params: { qnaId } });
+            const response = await axios.get(`/info/qnaList/qnaInfo`, { params: { qnaId } });
             // response.data에 필요한 데이터가 있음
             const data = response.data;
             // 데이터를 상태에 저장

@@ -21,7 +21,7 @@ public class QnaListController {
     @Autowired
     private QnaListService qnaListService;
 
-    @RequestMapping(value="/qnaList",method = RequestMethod.GET)
+    @RequestMapping(value="/info/qnaList",method = RequestMethod.GET)
     @ResponseBody
     public List<QnaInfores> getQnaList(){
         logger.info("qnaList");

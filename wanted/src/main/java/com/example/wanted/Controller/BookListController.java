@@ -25,7 +25,7 @@ public class BookListController {
     private BookListService bookListService;
 
     //클래스명 변경 필요 board -> bookInfo로
-    @RequestMapping(value="/bookList",method = RequestMethod.GET)
+    @RequestMapping(value="/info/bookList",method = RequestMethod.GET)
     @ResponseBody
     public List<BookInfores> getBookList(){
         logger.info("bookList");
@@ -39,7 +39,7 @@ public class BookListController {
         //return testInfoList;
         return bookListService.findAllBookInfo();
     }
-    @RequestMapping(value="/bookList/bookInfo",method = RequestMethod.GET)
+    @RequestMapping(value="/info/bookList/bookInfo",method = RequestMethod.GET)
     @ResponseBody
     public Optional<BookInfores> getBookInfo(@RequestParam(value="bookId") Long bookId){
         logger.info("bookInfo"+bookId);

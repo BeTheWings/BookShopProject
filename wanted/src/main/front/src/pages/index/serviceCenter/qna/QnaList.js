@@ -12,7 +12,7 @@ function QnaList() {
     const getQnaList = async () => {
         //await 이란?
         try {
-            const resp = await axios.get('/qnaList');
+            const resp = await axios.get('/info/qnaList');
             const data = resp.data; //데이타에 저장
             if(data.length === 0){
                 setHasMore(false);
@@ -42,7 +42,7 @@ function QnaList() {
                     : (<h2>Q&A</h2>)
                 }
                 {qnaList.map((qnaList) => (
-                    <Post title={qnaList.title} content={qnaList.writer}/>
+                    <Post title={qnaList.title} content={qnaList.writer} key={qnaList.qnaId}/>
                 ))}
 
             </div>
@@ -50,7 +50,7 @@ function QnaList() {
     )
 };
 
-    const Post = ({ title, content }) => {
+    const Post = ({ title, content,qnaId }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -59,7 +59,7 @@ function QnaList() {
 
     return (
         <div className="post">
-            <div className="post-title" onClick={toggleDropdown}>{title}</div>
+            <div key={qnaId} className="post-title" onClick={toggleDropdown}>{title}</div>
             {isOpen && (
                 <div className="qna-dropdown-content">
                     <p>{content}</p>

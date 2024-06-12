@@ -10,7 +10,7 @@ function BookList() {
     const getBookList = async () => {
         //await 이란?
         try{
-            const resp = await axios.get('/bookList/');
+            const resp = await axios.get('/info/bookList/');
             const data = resp.data; //데이타에 저장
             setBookList(data); // 받아온 정보를 BookList에 저장
             setLoading(false); // 로딩 상태를 false로 변경
@@ -27,9 +27,7 @@ function BookList() {
     return(
         <div>
             <ul>
-                {loading ? (<h2>Loading...</h2>)
-                    :(<h2>책 추후 이미지 + 책제목</h2>)
-                }
+                {loading && (<h2>Loading...</h2>)}
                 {bookList.map((board)=> (
                     <li className="noDot" key={board.bookId}>
                         <Link to={`/bookInfo/${board.bookId}`}>{board.title} {board.bookId}</Link>
