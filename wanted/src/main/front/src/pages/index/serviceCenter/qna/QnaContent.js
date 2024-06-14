@@ -1,50 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
-import QnaDetail from './QnaDetail';
+import InfiniteScroll from "react-infinite-scroll-component";
 
-function QnaContent() {
-    const { qnaId } = useParams(); // URL 파라미터에서 bookId를 가져옴
-    const [loading, setLoading] = useState(true); // 로딩 상태를 관리하는 상태 변수
-    const [qnaInfo, setQnaInfo] = useState(null); // 책 정보를 저장하는 상태 변수
+function QnaContents() {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [password, setPassword] = useState('');
+    const [writer,setWriter] = useState('');
+    const [items, setItems] = useState(Array.from({ length: 20 }));
 
-    const getQnaInfo = async () => {
-        try {
-            // axios.get()의 결과를 기다림
-           // const response = await axios.get(`/bookList/bookInfo/bookId=${bookId}`);
-            const response = await axios.get(`/info/qnaList/qnaInfo`, { params: { qnaId } });
-            // response.data에 필요한 데이터가 있음
-            const data = response.data;
-            // 데이터를 상태에 저장
-            setQnaInfo(data);
-            setLoading(false); // 로딩 상태를 false로 변경
-        } catch (error) {
-            // 에러를 처리
-            console.error("Error fetching QNA info:", error);
-        }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+       const data ={
+           Title : title,
+           Content : content,
+           Password : password,
+           Writer : writer
+       }
+
+       axios.post('/info/qnaContent/',data)
+            .then(response=>{
+                alert("질문이 성공적으로 등록되었습니다.");
+                window.location.href='/questionAndAnswer';
+            });
     };
 
-    useEffect(() => {
-        getQnaInfo(); // 컴포넌트가 마운트될 때 getBookInfo 함수 호출
-    }, [qnaId]); // bookId가 변경될 때마다 getBookInfo 함수 호출
+    const fetchMoreData = () => {
+        setTimeout(() => {
+            setItems(items.concat(Array.from({ length: 20 })));
+        }, 1500);
+    };
+
+    const handleReset = () => {
+        setTitle('');
+        setContent('');
+        setPassword('');
+        setWriter('');
+    };
 
     return (
-        <div>
-            {loading ? (
-                <h2>Loading...</h2> // 로딩 중일 때 표시할 내용
-            ) : (
-                qnaInfo && ( // qnaInfo가 존재할 때 QnaDetail 컴포넌트 렌더링
-                    <QnaDetail
-                        qnaId={qnaInfo.qnaId}
-                        title={qnaInfo.title}
-                        question={qnaInfo.question}
-                        answer = {qnaInfo.answer}
-                        writer={qnaInfo.writer}
-                    />
-                )
-            )}
-        </div>
+
+            <div className="form-container">
+                <h1>Q&A</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="title">제목:</label>
+                        <input
+                            type="text"
+                            id="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="content">본문:</label>
+                        <textarea
+                            id="content"
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                            required
+                            className="content-text-area"
+                        ></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="writer">이름:</label>
+                        <input
+                            type="text"
+                            id="writer"
+                            value={writer}
+                            onChange={(e) => setWriter(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">비밀번호:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-buttons">
+                        <button type="submit">등록</button>
+                        <button type="button" onClick={handleReset}>취소</button>
+                    </div>
+                </form>
+                <InfiniteScroll
+                    dataLength={items.length}
+                    next={fetchMoreData}
+                    hasMore={true}
+                    loader={<h4>Loading...</h4>}
+                >
+                </InfiniteScroll>
+            </div>
     );
 }
 
-export default QnaContent;
+export default QnaContents;

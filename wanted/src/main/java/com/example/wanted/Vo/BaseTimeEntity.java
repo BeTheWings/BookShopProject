@@ -12,6 +12,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
+@MappedSuperclass //이 클래스를 상속하는 경우 date와 modifiedDate를 컬럼으로 인식
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
 

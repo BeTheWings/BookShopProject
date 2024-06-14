@@ -1,10 +1,9 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../css/sliders.css";
 import axios from "axios";
-import {Link} from "react-router-dom";
 
 export default class Sliders extends Component{
     constructor(props){
@@ -42,7 +41,7 @@ export default class Sliders extends Component{
             slidesToShow:1,
             slidesToScroll:1,
             autoplay:true,
-            autoplaySpeed:3000,
+            autoplaySpeed:2000,
             cssEase:'ease-in-out'
         };
 

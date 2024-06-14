@@ -11,12 +11,77 @@ body {
     background-color: #fff;
     min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
 }
+
 .Qna h2 {
     margin: 0;
     font-size: 18px;
     color: #333;
 }
 
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    text-align: center;
+}
+.content-text-area{
+    height: 253px;
+}
+.form-container{
+    max-width :1000px;
+}
+.form-buttons button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-buttons button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
 .post {
     margin-top: 10px;
     background: #f9f9f9;
@@ -37,4 +102,19 @@ body {
     margin-top: 10px;
     border-top: 1px solid #ccc;
     background-color: #fff;
+}
+
+@media (max-width: 480px) {
+   .form-container{
+       height: 100vh; /* 전체 높이를 설정 */
+       overflow-y: auto; /* 수직 스크롤을 가능하게 함 */
+   }
+}
+
+@media (max-width: 768px) {
+    .form-container{
+        height: 100vh; /* 전체 높이를 설정 */
+        overflow-y: auto; /* 수직 스크롤을 가능하게 함 */
+    }
+
 }

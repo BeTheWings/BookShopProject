@@ -6,7 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import javax.persistence.*;
 
-@Table(name="qna_Info")
+@Table(name="qnaInfo")
 @Getter
 @Setter
 @Entity
@@ -25,5 +25,9 @@ public class QnaInfores extends BaseTimeEntity{
     @NonNull
     @Column(unique = false,length = 50)
     private String writer;
+
+    @NonNull
+    @Column(unique = false,length = 1000)
+    private String passWord;
 
 }
