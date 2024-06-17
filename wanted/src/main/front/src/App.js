@@ -7,7 +7,7 @@ import NoticeList from "./pages/index/serviceCenter/notice/NoticeList";
 import NoticeInfo from "./pages/index/serviceCenter/notice/NoticeInfo";
 import QnaList from "./pages/index/serviceCenter/qna/QnaList";
 import QnaContent from "./pages/index/serviceCenter/qna/QnaContent";
-
+import CustomerCenter from "./pages/index/serviceCenter/qna/CustomerCenter"
 
 import Main from "./pages/index/Main";
 import React from "react";
@@ -26,6 +26,7 @@ function App() {
           <Route path="/noticeInfo/:noticeId" element={<NoticeInfo/>}></Route>
           <Route path="/questionAndAnswer" element={<QnaList/>}></Route>
           <Route path="/qnaContent" element={<QnaContent/>}></Route>
+          <Route path="/customerCenter" element={<CustomerCenter/>}></Route>
       </Routes>
   );
 }

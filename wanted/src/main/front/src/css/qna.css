@@ -12,9 +12,8 @@ body {
     min-height: 100vh; /* 최소 높이를 화면 전체 높이로 설정 */
 }
 
-.Qna h2 {
+.Qna h1 {
     margin: 0;
-    font-size: 18px;
     color: #333;
 }
 

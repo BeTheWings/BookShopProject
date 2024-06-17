@@ -1,7 +1,9 @@
-//상태와 effect란?
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+//자체 css로 변경필요
+//페이지네이션 1 2 3 4 표현 필요
+// 서버작업필요
 import  "../../../../Main.css";
 
 function BookList() {
@@ -26,11 +28,16 @@ function BookList() {
 
     return(
         <div>
+            <h1 className="title">공지사항</h1>
+            <nav className="navbar">
+                <ul className="nav-tabs">
+                    <li className="nav-item "><a href="/customerCenter">전체</a></li>
+                    <li className="nav-item active"><a href="#">공지사항</a></li>
+                    <li className="nav-item "><a href="/questionAndAnswer">질의 응답</a></li>
+                </ul>
+            </nav>
             <ul>
-                {loading ? (<h2>Loading...</h2>)
-                    :(<h2 className="noDot">공지사항</h2>)
-                }
-                {noticeList.map((board)=> (
+                {noticeList.map((board) => (
                     <li className="noDot" key={board.bookId}>
                         <Link to={`/bookInfo/${board.bookId}`}>{board.title} {board.bookId}</Link>
                     </li>

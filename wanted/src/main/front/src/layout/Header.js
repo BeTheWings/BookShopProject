@@ -18,8 +18,9 @@ const Header = () => {
                     </li>
                     <li><Link to="/eventList">이벤트</Link></li>
                     <li className="dropdown">
-                        <Link to="/noticeList">고객센터</Link>
+                        <Link to="/customerCenter">고객센터</Link>
                         <ul className="dropdown-content">
+                            <li><Link to="/customerCenter">전체</Link></li>
                             <li><Link to="/noticeList">공지사항</Link></li>
                             <li><Link to="/questionAndAnswer">질의응답</Link></li>
                         </ul>
