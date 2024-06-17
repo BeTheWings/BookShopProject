@@ -1,45 +1,85 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../../../../css/noticeList.css"
 import {Link} from "react-router-dom";
-//자체 css로 변경필요
-//페이지네이션 1 2 3 4 표현 필요
-// 서버작업필요
-import  "../../../../Main.css";
 
-function BookList() {
-    const [noticeList,setNoticeList] = useState([]);
-    const [loading,setLoading] = useState(true);
-    const getNoticeList = async () => {
-        //await 이란?
-        try{
-            const resp = await axios.get('/info/bookList/');
-            const data = resp.data; //데이타에 저장
-            setNoticeList(data); // 받아온 정보를 BookList에 저장
-            setLoading(false); // 로딩 상태를 false로 변경
-            }catch(error){
-            console.error("Error fetching bookList",error);
-            setLoading(true); // 로딩 상태를 false로 변경
-        }
+function NoticeList() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchType, setSearchType] = useState('title');
+    const [filteredNotices, setFilteredNotices] = useState([]);
+
+    useEffect(() => {
+        // 게시물 목록을 가져오는 함수
+        const fetchNotices = async () => {
+            try {
+                const response = await axios.get('/info/noticeList');
+                setFilteredNotices(response.data);
+            } catch (error) {
+                console.error('Error fetching notices:', error);
+            }
+        };
+        fetchNotices();
+    }, []);
+
+    // 검색 및 정렬 로직
+    const searchNotice = () => {
+        const filtered = filteredNotices.filter(notice =>
+            searchType === 'writer'
+                ? notice.writer.toLowerCase().includes(searchTerm.toLowerCase())
+                : notice.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        setFilteredNotices(filtered);
     };
+    const activeEvent=(e)=>{
+        if(e.key==='Enter'){
+            searchNotice();
+        }
+    }
 
-    useEffect(()=>{
-        getNoticeList(); //게시글 목록 조회 함수 호출
-    },[]);
-
-    return(
-        <div>
+    return (
+        <div className="notice-list-container">
             <h1 className="title">공지사항</h1>
             <nav className="navbar">
                 <ul className="nav-tabs">
                     <li className="nav-item "><a href="/customerCenter">전체</a></li>
-                    <li className="nav-item active"><a href="#">공지사항</a></li>
-                    <li className="nav-item "><a href="/questionAndAnswer">질의 응답</a></li>
+                    <li className="nav-item active"><a href="/noticeList">공지사항</a></li>
+                    <li className="nav-item"><a href="/questionAndAnswer">질의 응답</a></li>
                 </ul>
             </nav>
-            <ul>
-                {noticeList.map((board) => (
-                    <li className="noDot" key={board.bookId}>
-                        <Link to={`/bookInfo/${board.bookId}`}>{board.title} {board.bookId}</Link>
+            <br/>
+            <div className="search-sort-bar">
+                <select
+                    value={searchType}
+                    onChange={(e) => setSearchType(e.target.value)}
+                    className="search-select"
+                >
+                    <option value="title">제목</option>
+                    <option value="writer">작성자</option>
+                </select>
+                <input
+                    type="text"
+                    placeholder="검색어를 입력해주세요"
+                    value={searchTerm}
+                    onKeyDown={(e)=>activeEvent(e)}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="search-input"
+                />
+                <button className="search-button" onClick={searchNotice}>🔍</button>
+            </div>
+            <ul className="notice-list">
+                {filteredNotices.map((notice) => (
+                    <li key={notice.noticeId} className="notice-item">
+                        <div className="notice-id">{notice.noticeId}</div>
+                        <div className="notice-info">
+                            <span className="notice-category">공지사항| {new Date(notice.date).toLocaleDateString()}</span>
+                            <div className="notice-header">
+                                <h4 className="notice-title">
+                                    <Link className="remove-decoration" to={`/noticeInfo/${notice.noticeId}`}>{notice.title}</Link>
+                                </h4>
+                                <span className="notice-author">작성자 : {notice.writer}</span>
+                            </div>
+                        </div>
                     </li>
                 ))}
             </ul>
@@ -47,4 +87,4 @@ function BookList() {
     );
 }
 
-export default BookList;
+export default NoticeList;

@@ -1,15 +1,15 @@
 import {Route, Routes} from "react-router-dom";
-import BookList from "./pages/index/book/BookList";
-import BookInfo from "./pages/index/book/BookInfo";
-import EventList from "./pages/index/event/EventList";
-import EventInfo from "./pages/index/event/EventInfo";
-import NoticeList from "./pages/index/serviceCenter/notice/NoticeList";
-import NoticeInfo from "./pages/index/serviceCenter/notice/NoticeInfo";
-import QnaList from "./pages/index/serviceCenter/qna/QnaList";
-import QnaContent from "./pages/index/serviceCenter/qna/QnaContent";
-import CustomerCenter from "./pages/index/serviceCenter/qna/CustomerCenter"
+import BookList from "./book/BookList";
+import BookInfo from "./book/BookInfo";
+import EventList from "./event/EventList";
+import EventInfo from "./event/EventInfo";
+import NoticeList from "./serviceCenter/notice/NoticeList";
+import NoticeInfo from "./serviceCenter/notice/NoticeInfo";
+import QnaList from "./serviceCenter/qna/QnaList";
+import QnaContent from "./serviceCenter/qna/QnaContent";
+import CustomerCenter from "./serviceCenter/qna/CustomerCenter"
 
-import Main from "./pages/index/Main";
+import Main from "./Main";
 import React from "react";
 
 

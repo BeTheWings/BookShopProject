@@ -28,11 +28,10 @@ function CustomerCenter() {
 
     const getNoticeList = async () => {
         try {
-            const resp = await axios.get('/info/bookList/');
-            const data = resp.data;
-            setNoticeList(data);
+            const resp = await axios.get('/info/noticeList');
+            setNoticeList(resp.data);
         } catch (error) {
-            console.error("Error fetching bookList", error);
+            console.error("Error fetching noticeList", error);
         }
     };
 
@@ -58,10 +57,21 @@ function CustomerCenter() {
                     </h1>
                     <br/>
                     <h3>공지사항<a className="more-link" href="/noticeList">더보기 ></a></h3>
-                    <ul>
-                        {noticeList.map((board) => (
-                            <li className="noDot" key={board.bookId}>
-                                <Link to={`/bookInfo/${board.bookId}`}>{board.title} {board.bookId}</Link>
+                    <ul className="notice-list">
+                        {noticeList.map((notice) => (
+                            <li key={notice.noticeId} className="notice-item">
+                                <div className="notice-id">{notice.noticeId}</div>
+                                <div className="notice-info">
+                                    <span
+                                        className="notice-category">공지사항| {new Date(notice.date).toLocaleDateString()}</span>
+                                    <div className="notice-header">
+                                        <h4 className="notice-title">
+                                            <Link className="remove-decoration"
+                                                  to={`/noticeInfo/${notice.noticeId}`}>{notice.title}</Link>
+                                        </h4>
+                                        <span className="notice-author">작성자 : {notice.writer}</span>
+                                    </div>
+                                </div>
                             </li>
                         ))}
                     </ul>

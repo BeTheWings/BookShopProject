@@ -17,6 +17,7 @@ function NoticeInfo() {
             const data = response.data;
 
             // 데이터를 상태에 저장
+            console.log(data);
             setNoticeInfo(data);
             setLoading(false); // 로딩 상태를 false로 변경
 

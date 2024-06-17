@@ -1,4 +1,4 @@
-import '../../Main.css';
+import '../../css/Main.css';
 import Sliders from "../../layout/Sliders";
 import React,{useState,useEffect} from "react";
 import NoticeList from "./serviceCenter/notice/NoticeList";

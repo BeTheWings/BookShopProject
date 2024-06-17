@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../../Main.css';
+import '../../css/Main.css';
 import Sliders from "../../layout/Sliders";
 import React from "react";
 
