@@ -1,32 +1,42 @@
-import React from 'react';
-import '../../../../css/bookInfo.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams, Link } from 'react-router-dom';
+import "../../../../css/noticeDetail.css";
 
-const BookDetail = ({ bookId, title, description, author,coverImageUrl,publishDate,format,pages,isbn,discountPrice,purchaseLink,price }) => {
+function NoticeDetail() {
+    const { noticeId } = useParams();
+    const [post, setPost] = useState(null);
+
+    const getNoticeDetail = async () => {
+        try {
+            const response = await axios.get(`/info/noticeList/noticeDetail/`, { params: { noticeId } });
+            setPost(response.data);
+        } catch (error) {
+            console.error('Error fetching post:', error);
+        }
+    };
+
+    useEffect(() => {
+        getNoticeDetail();
+    }, [noticeId]);
+
+    if (!post) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div className="book-details">
-            <div className="book-header">
-                <img src={"../../../../public/images/logo.svg"} alt="Logo" className="book-cover"/>
-
-                <div className="book-meta">
-                    <h1>{title}</h1>
-                    <div className="book-meta-details">
-                        <p><strong>저자:</strong> {author}</p>
-                        <p><strong>출간일:</strong> {publishDate}</p>
-                        <p><strong>판형:</strong> {format}</p>
-                        <p><strong>페이지:</strong> {pages}</p>
-                        <p><strong>ISBN:</strong> {isbn}</p>
-                        <p><strong>정가:</strong> {price}</p>
-                        <p><strong>인터넷할인가:</strong> {discountPrice}</p>
-                    </div>
-                    <a href="https://www.naver.com" className="purchase-button">책 구매하러 가기</a>
-                </div>
+        <div className="post-detail-container">
+            <h1 className="post-title">{post.title}</h1>
+            <div className="post-meta">
+                <span>작성자: {post.writer}</span>
+                <span>{new Date(post.date).toLocaleDateString()}</span>
             </div>
-            <div className="book-description">
-                <h2>저자 소개</h2>
-                <p>{description}</p>
+            <div className="post-content">
+                {post.content}
             </div>
+            <Link to="/noticeList" className="back-button">뒤로가기</Link>
         </div>
     );
-};
+}
 
-export default BookDetail;
+export default NoticeDetail;

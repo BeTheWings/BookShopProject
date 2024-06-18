@@ -52,7 +52,7 @@ export default class SecondSliders extends Component{
                         <div><h3>이미지 1</h3></div>
                         ) : (
                         secondSlideList.map((secondSlideList) => (
-                         <a href={secondSlideList.link}>
+                         <a href={secondSlideList.link} key={secondSlideList.slideId}>
                             <img src={`/${secondSlideList.imgLocation}`} className={secondSlideList.css} alt="Img"/>
                         </a>
                         ))

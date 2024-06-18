@@ -34,7 +34,7 @@ public class NoticeListController {
         //return testInfoList;
         return noticeListService.findAllNoticeList();
     }
-    @RequestMapping(value="/info/noticeList/noticeInfo",method = RequestMethod.GET)
+    @RequestMapping(value="/info/noticeList/noticeDetail",method = RequestMethod.GET)
     @ResponseBody
     public Optional<NoticeInfores> getBookInfo(@RequestParam(value="noticeId") Long noticeId){
         logger.info("noticeDetail"+noticeId);

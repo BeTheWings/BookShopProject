@@ -1,9 +1,10 @@
 import '../../css/Main.css';
 import Sliders from "../../layout/Sliders";
 import React,{useState,useEffect} from "react";
-import NoticeList from "./serviceCenter/notice/NoticeList";
+import NoticeList from "./main/MainNoticeList";
 import EventList from "./event/EventList";
 import SecondSlider from "../../layout/SecondSliders"
+import QnaList from "./main/MainQnaList";
 
 function Main() {
     const [isMobile, setIsMobile] = useState(false);
@@ -26,7 +27,7 @@ function Main() {
             <div className="ListContainer">
                 <NoticeList></NoticeList>
                 <EventList></EventList>
-                <h2><a className="removeDecoration" href="/questionAndAnswer">Q&A</a></h2>
+                <QnaList></QnaList>
             </div>
         </div>
     );

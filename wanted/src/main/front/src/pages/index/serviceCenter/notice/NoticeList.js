@@ -75,11 +75,12 @@ function NoticeList() {
                             <span className="notice-category">공지사항| {new Date(notice.date).toLocaleDateString()}</span>
                             <div className="notice-header">
                                 <h4 className="notice-title">
-                                    <Link className="remove-decoration" to={`/noticeInfo/${notice.noticeId}`}>{notice.title}</Link>
+                                    <Link className="remove-decoration" to={`/noticeDetail/${notice.noticeId}`}>{notice.title}</Link>
                                 </h4>
                                 <span className="notice-author">작성자 : {notice.writer}</span>
                             </div>
                         </div>
+
                     </li>
                 ))}
             </ul>

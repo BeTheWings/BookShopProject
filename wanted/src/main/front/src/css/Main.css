@@ -6,6 +6,14 @@
 .Slider{
   text-align: center;
 }
+.main-more-link {
+  display: flex;
+  justify-content: flex-end;
+  right: 0;
+  color: blue;
+  text-decoration: none;
+  font-size: 14px;
+}
 
 .App-logo {
   height: 40vmin;
@@ -34,18 +42,22 @@
 }
 .ListContainer {
   display: flex;
-  justify-content: center;
-  gap: 250px; /* 리스트 사이의 간격 */
+  justify-content: space-around; /* 변경: 리스트 사이의 간격을 균등하게 */
+  gap: 20px; /* 리스트 사이의 간격 */
+  width: 100%; /* 변경: 전체 너비를 차지 */
+  max-width: 1200px; /* 변경: 최대 너비를 설정 */
+  margin: 0 auto;
+  align-items: baseline;
 }
+
 .noDot {
   list-style-type: none;
   text-align: left;
 }
 
-.removeDecoration{
+.removeDecoration {
   text-decoration: none; /* 링크의 밑줄을 제거 */
   color: black;
-
 }
 .slider-container {
   width: 80%;
@@ -57,6 +69,10 @@
   margin: 0 auto;
 }
 
+.notice-title {
+  text-align: left;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -65,18 +81,17 @@
     transform: rotate(360deg);
   }
 }
+
 @media (max-width: 480px) {
   .ListContainer {
-    display: flex;
-    justify-content: center;
+    flex-direction: column; /* 변경: 모바일에서는 세로로 배치 */
     gap: 10px; /* 리스트 사이의 간격 */
   }
 }
 
 @media (max-width: 768px) {
   .ListContainer {
-    display: flex;
-    justify-content: center;
+    flex-direction: column; /* 변경: 작은 화면에서는 세로로 배치 */
     gap: 10px; /* 리스트 사이의 간격 */
   }
 }
